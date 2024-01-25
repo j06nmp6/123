@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>都更權狀坪數計算器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>都更權狀坪數計算器</h1>
+
+<form id="calculationForm">
+    <label for="landOwnership">土地持份：</label>
+    <input type="number" id="landOwnership" step="0.01" required>
+    <button type="button" onclick="calculateArea()">計算</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+    function calculateArea() {
+        // 取得土地持份的值
+        var landOwnership = parseFloat(document.getElementById("landOwnership").value);
+
+        // 驗證土地持份是否為有效數字
+        if (isNaN(landOwnership)) {
+            alert("請輸入有效的土地持份數字。");
+            return;
+        }
+
+        // 計算都更後權狀坪數
+        var afterReconstructionArea = landOwnership * 7.5;
+
+        // 顯示結果
+        document.getElementById("result").innerHTML = "都更後權狀坪數：" + afterReconstructionArea + " 坪";
+    }
+</script>
+
+</body>
+</html>
